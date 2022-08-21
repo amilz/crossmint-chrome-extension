@@ -1,12 +1,15 @@
 'use strict'
 
+//To-do: move this to a .env or have some other log-in/verification setp
 const config= {
     secret: "zzzz.xxxxxx.xxxxxxxxxxxxxxxxxxxxx",
     projectKey: "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx",
     projectName: "default"
 }
-
+//Type of extensions that will be scrubbed by the extension
 const imgExtensions = ['png','gif','jpg'];
+
+// DIV Definitions 
 const imageDiv = document.getElementById('image_div');
 const mintPageDiv = document.getElementById('mint_page');
 const selectedImgDiv = document.getElementById('selected_img');
@@ -15,7 +18,7 @@ const backBtn = document.getElementById('back_btn');
 const loader = document.getElementById('loader');
 const resultText = document.getElementById('result');
 
-
+//button functionality
 backBtn.addEventListener('click', function() {
     imageDiv.innerHTML = '';
     imageDiv.style.display = 'block';
@@ -26,12 +29,14 @@ crossMintBtn.addEventListener('click', function() {
     mintNft();
 });
 
+//hide these divs on launch
 mintPageDiv.style.display = 'none';
 loader.style.display = 'none';
 
 let selectedImgUrl = '';
 
-function scriptCode() {
+//find all image urls on the page
+function fetchPageImageUrls() {
     let images = document.querySelectorAll('img');
     let srcArray =
          Array.from(images).map(function(image) {
@@ -40,12 +45,13 @@ function scriptCode() {
     return srcArray;  
 }
 
+//chrome function to get the current tab
 async function getCurrentTab() {
     let queryOptions = { active: true, lastFocusedWindow: true };
-    // `tab` will either be a `tabs.Tab` instance or `undefined`.
     let [tab] = await chrome.tabs.query(queryOptions);
     return tab;
   }
+
 
 async function main() {
     console.log(`main running`);
@@ -53,15 +59,17 @@ async function main() {
     console.log(`got current tab`);
     chrome.scripting.executeScript({
         target: {tabId:currentTab.id},
-        function: scriptCode
+        function: fetchPageImageUrls
     },
     (res)=>{
         let allImages = res[0].result;
         if (allImages.length < 1) return;
+        //only images w/ our extensions at the end of the file path will be allowed
         allImages = allImages.filter(file => imgExtensions.includes(file.split('.').pop()));
         allImages.forEach((img, i) =>{
             let newImage = document.createElement('img');
             newImage.src = img;
+            //add a listener for each image -- TO DO clean this up a bit + global function
             newImage.addEventListener('click', function() {
                 selectedImgUrl=newImage.src;
                 imageDiv.style.display = 'none';
@@ -124,7 +132,7 @@ function mintNft(){
     });
   }
 
-  function onComplete(result) {
+function onComplete(result) {
     loader.style.display = 'none';
     resultText.innerHTML = result;
 }
