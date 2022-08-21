@@ -21,7 +21,13 @@ You may need to pin the extension to Chrome.
 ### Test the extension
 1. Navigate to a website with lots of images (amazon works great).
 2. click the Extension
+
+![image](https://user-images.githubusercontent.com/85324096/185813070-e9c00b63-31fb-4e30-ac01-1012adaf2ae6.png)
+
 3. Click an image to mint an NFT
+
+![image](https://user-images.githubusercontent.com/85324096/185813083-76b65272-8485-4690-b64a-40d2dbd99e36.png)
+
 4. Update the name, description, etc.
 5. Click "Crossmint!" 
 *Note: you can right click--inspect within the extension to see the console. If you click out of the extension the inspector will disappear!*
@@ -43,3 +49,7 @@ known issues:
 - some websites' images are masked/modified and don't end w/ standard extension 
 - issue with checking mint status (returning error...some auth issue. i think b/c the format of the tx Id) (checkMintStatus)
 - back button doesn't rerender the images correctly
+
+
+
+
