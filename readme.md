@@ -21,9 +21,11 @@ You may need to pin the extension to Chrome.
 ### Test the extension
 1. Navigate to a website with lots of images (amazon works great).
 2. click the Extension
+
 ![image](https://user-images.githubusercontent.com/85324096/185813070-e9c00b63-31fb-4e30-ac01-1012adaf2ae6.png)
 
 3. Click an image to mint an NFT
+
 ![image](https://user-images.githubusercontent.com/85324096/185813083-76b65272-8485-4690-b64a-40d2dbd99e36.png)
 
 4. Update the name, description, etc.
