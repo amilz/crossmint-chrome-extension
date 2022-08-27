@@ -26,7 +26,7 @@ You may need to pin the extension to Chrome.
 
 3. Click an image to mint an NFT
 
-![image](https://user-images.githubusercontent.com/85324096/185813083-76b65272-8485-4690-b64a-40d2dbd99e36.png)
+<img width="255" alt="image" src="https://user-images.githubusercontent.com/85324096/187050555-98b61ed9-51ec-4a47-8985-dfdf12007c38.png">
 
 4. Update the name, description, etc.
 5. Click "Crossmint!" 
